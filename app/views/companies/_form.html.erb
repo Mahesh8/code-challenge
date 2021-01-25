@@ -53,7 +53,8 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.email_field :email, class: "form-control validate-email", placeholder: "hello@getmainstreet.com", pattern: Company::EMAIL_REGEX.inspect[3..-4], title: Company::EMAIL_ERROR_MESSAGE %>
+          <small id="emailHelp" class="form-text text-muted">Domain name should be 'getmainstreet.com'</small>
         </div>
       </div>
     </div>
@@ -70,9 +71,20 @@
     </div>
 
     <div class="row my-lg-3">
+      <div class="col-lg-3">
+        <label><strong>Input Color</strong><br><small class="text-muted">Allows you to enter background color of your choice</small></label>
+      </div>
+      <div class="col-lg offset-lg-1">
+          <div data-controller="color" class="form-group">
+            <%= f.color_field :color, value: @company.color, class: "color-input"%>
+          </div>
+      </div>
+    </div>
+
+    <div class="row my-lg-3">
       <div class="col">
         <div class="form-group">
-          <%= f.submit class: "btn btn-success"%>
+          <%= f.submit class: "btn btn-success" %>
         </div>
       </div>
     </div>
